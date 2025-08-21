@@ -50,3 +50,4 @@
 // Fix non-mutual follower detection 1755613104
 // Improve OAuth token handling 1755699550
 // Optimize API request batching 1755699550
+// Refactor GitHub API client 1755785924
