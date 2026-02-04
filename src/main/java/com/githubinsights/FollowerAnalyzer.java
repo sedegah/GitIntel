@@ -15,20 +15,20 @@ public class FollowerAnalyzer {
         Set<String> following = service.getFollowing(username);
 
         if (followers == null || following == null) {
-            System.out.println("❌ Failed to fetch followers/following.");
+            System.out.println(" Failed to fetch followers/following.");
             return new HashSet<>();
         }
 
-        System.out.println("✅ Total Followers: " + followers.size());
-        System.out.println("✅ Total Following: " + following.size());
+        System.out.println(" Total Followers: " + followers.size());
+        System.out.println("Total Following: " + following.size());
 
         Set<String> nonFollowers = new HashSet<>(following);
         nonFollowers.removeAll(followers);
 
         if (nonFollowers.isEmpty()) {
-            System.out.println("🎉 Everyone you follow follows you back!");
+            System.out.println(" Everyone you follow follows you back!");
         } else {
-            System.out.println("🚫 Users who don’t follow you back:");
+            System.out.println(" Users who don’t follow you back:");
             for (String user : nonFollowers) {
                 System.out.println("- " + user);
             }
