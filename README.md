@@ -6,8 +6,28 @@ A powerful Java-based GitHub analytics tool that helps you identify non-mutual f
 
 - **Non-Mutual Followers Analysis**: Discover users who follow you but whom you don't follow back
 - **Following vs Followers Comparison**: Get detailed insights into your GitHub social connections
-- **Clean Console Output**: Easy-to-read formatted results
+- **CSV Export**: Automatically exports results to organized CSV files in the `output/` directory
+- **Clean Console Output**: Easy-to-read formatted results with summary statistics
 - **Environment Variable Support**: Secure GitHub token management
+
+## Project Structure
+
+```
+GitIntel/
+├── src/main/java/com/githubinsights/
+│   ├── Main.java                    # Entry point
+│   ├── model/
+│   │   └── AnalysisResult.java      # Data model for analysis results
+│   ├── service/
+│   │   └── GitHubService.java       # GitHub API client with pagination
+│   ├── analyzer/
+│   │   └── FollowerAnalyzer.java    # Follower relationship analyzer
+│   └── exporter/
+│       └── CSVExporter.java         # CSV file exporter
+├── output/                          # Generated CSV reports (gitignored)
+├── pom.xml                          # Maven configuration
+└── README.md
+```
 
 ## Prerequisites
 
@@ -51,17 +71,21 @@ Before running GitIntel, ensure you have:
 Analyze any GitHub user's followers and following:
 
 ```bash
-mvn clean compile exec:java `-Dexec.args=username
+mvn clean compile exec:java -Dexec.args=username
 ```
+
+Results will be automatically saved to the `output/` directory:
+- `username_not_following_back_non_followers.csv` - Users you follow who don't follow you back
+- `username_you_dont_follow_back_non_followers.csv` - Users who follow you but you don't follow back
 
 ### Examples
 
 ```bash
 # Analyze a specific user
-mvn clean compile exec:java `-Dexec.args=sedegah
+mvn clean compile exec:java -Dexec.args="sedegah"
 
 # Analyze your own profile
-mvn clean compile exec:java `-Dexec.args=yourusername
+mvn clean compile exec:java -Dexec.args=yourusername
 ```
 
 ### Alternative Running Methods

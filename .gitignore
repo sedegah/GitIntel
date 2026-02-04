@@ -1,4 +1,4 @@
-echo "# Environment variables
+# Environment variables
 .env
 .env.local
 
@@ -24,4 +24,8 @@ buildNumber.properties
 
 # OS files
 .DS_Store
-Thumbs.db" > .gitignore
+Thumbs.db
+
+# Output files
+output/
+*.csv
